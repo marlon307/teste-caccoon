@@ -1,0 +1,14 @@
+.input {
+  display: block;
+  width: max-content;
+  color: var(--color-text);
+
+  input {
+    outline: none;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    position: relative;
+    font-size: var(--font-s-input);
+    padding: 12px 8px;
+  }
+}
