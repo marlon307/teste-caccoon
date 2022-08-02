@@ -1,0 +1,22 @@
+.form {
+  h1 {
+    color: var(--color-h1)
+  }
+
+  width: 100%;
+  max-width: 300px;
+  height: 50vh;
+  margin: 8em auto;
+
+  button {
+    margin-top: 1.6em;
+    font-size: var(--font-s-button);
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    background: var(--color-button);
+    color: var(--color-cf-button);
+  }
+}

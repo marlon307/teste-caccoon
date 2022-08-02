@@ -1,5 +1,6 @@
 import React, { useState, useCallback, ChangeEvent } from 'react';
 import Input from '../components/componentsForm/Input';
+import style from '../sass/style.module.scss';
 
 type TLogin = {
   email: string;
@@ -20,8 +21,13 @@ function Login() {
     }));
   }, []);
 
+  const actionLogin = () => {
+
+  };
+
   return (
-    <form>
+    <form className={ style.form }>
+      <h1>Entrar</h1>
       <Input
         id="email"
         name="email"
@@ -40,6 +46,7 @@ function Login() {
         changeEvent={ changeLogin }
         autoComplete="current-password"
       />
+      <button type="button" onClick={ actionLogin }>Login</button>
     </form>
   );
 }
