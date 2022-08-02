@@ -21,7 +21,7 @@ function Header() {
           </a>
         </Link>
       </div>
-      <div>
+      <div className={ style.login }>
         <Link href="login">
           Login
         </Link>
