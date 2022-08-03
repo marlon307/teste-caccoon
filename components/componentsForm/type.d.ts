@@ -6,4 +6,5 @@ interface IIpunt {
   placeholder: string;
   changeEvent: (e: ChangeEvent<HTMLInputElement>) => void;
   autoComplete: string;
+  errorActive: boolean;
 }

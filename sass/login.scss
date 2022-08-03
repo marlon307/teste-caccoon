@@ -9,7 +9,7 @@
   margin: 8em auto;
 
   button {
-    margin-top: 1.6em;
+    margin-top: 2.2em;
     font-size: var(--font-s-button);
     padding: 12px 22px;
     border-radius: 8px;
@@ -18,5 +18,11 @@
     border: none;
     background: var(--color-button);
     color: var(--color-cf-button);
+  }
+
+  p {
+    position: absolute;
+    transform: translateY(12px);
+    color: var(--color-red);
   }
 }

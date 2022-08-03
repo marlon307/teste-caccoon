@@ -1,5 +1,4 @@
-html,
-body {
+* {
   padding: 0;
   margin: 0;
   outline: none;
@@ -22,8 +21,12 @@ body {
   // color color font button
   --color-cf-button: #fff;
   --color-h1: #454444;
+  --color-h2: #4b4b4b;
   // color link button
   --color-l-button: #111111;
+  --color-green: #0fa21b;
+  --color-red: #cc0b0b;
+  --color-shadow: #f7f7f7;
 }
 
 #__next {
