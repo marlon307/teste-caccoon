@@ -6,23 +6,45 @@ import type IProduct from '../types/products';
 import style from '../sass/style.module.scss';
 
 function Products({ products }: IProduct) {
-  console.log(products);
-
   return (
     <div className={ style.content_products }>
       { products.map((product) => (
-        <div className={ style.card } key={ product.id }>
-          <div>{ product.brand }</div>
-          <div>{ product.id }</div>
-          <div>{ product.price }</div>
-          { product.images.map((image) => (
+        <div className={ style.card } key={ product.id } title={ product.description }>
+          <figure>
             <Image
-              key={ image }
-              src={ image }
+              src={ product.thumbnail }
               layout="fill"
               quality={ 100 }
+              priority
             />
-          )) }
+          </figure>
+          <div className={ style.primary_line }>
+            <div className={ style.title }>
+              <h2>{ product.title }</h2>
+            </div>
+            <div className={ style.rating } title={ `Avaliações de (${product.rating}) estrelas.` }>
+              <span>{ product.rating }</span>
+            </div>
+          </div>
+          <div className={ style.price }>
+            <span>
+              { (product.price + (product.discountPercentage / 100) * product.price)
+                .toLocaleString('pt-BR', {
+                  style: 'currency',
+                  currency: 'BRL',
+                }) }
+            </span>
+            <span>
+              { product.price.toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL',
+              }) }
+            </span>
+            <span>
+              { product.discountPercentage }
+              % OFF
+            </span>
+          </div>
         </div>
       )) }
     </div>
