@@ -1,8 +1,12 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import useLogin from '../../hooks/useLogin';
 import style from './style.module.scss';
 
 function Header() {
+  const { user } = useLogin();
+
   return (
     <header className={ style.header }>
       <div className={ style.logo }>
@@ -22,9 +26,20 @@ function Header() {
         </Link>
       </div>
       <div className={ style.login }>
-        <Link href="login">
-          Login
-        </Link>
+        { user?.username ? (
+          <figure title={ user?.username }>
+            <Image
+              src={ user?.image }
+              layout="fill"
+              priority
+              quality={ 100 }
+            />
+          </figure>
+        ) : (
+          <Link href="login">
+            Login
+          </Link>
+        ) }
       </div>
     </header>
   );

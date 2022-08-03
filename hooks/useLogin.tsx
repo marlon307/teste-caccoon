@@ -1,8 +1,10 @@
 import useSWR from 'swr';
-import { setCookie } from 'cookies-next';
+import { setCookie, getCookie } from 'cookies-next';
 import api from '../service/api';
 
 export async function loginUser(username: string, password: string) {
+  const cookie = getCookie('token');
+
   if (username && password) {
     const { data } = await api.post('/auth/login', {
       username,
@@ -10,13 +12,21 @@ export async function loginUser(username: string, password: string) {
       expiresInMins: 60,
     }).catch(({ response }) => ({ data: response.data }));
 
-    document.cookie = `token=${data.token}`;
     setCookie('token', data.token, {
       maxAge: 60 * 60,
       secure: true,
       sameSite: 'strict',
     });
+
+    delete data.token;
+    localStorage.setItem('user', JSON.stringify(data));
+
     return data;
+  }
+
+  if (cookie) {
+    const jsonInString = localStorage.getItem('user')!;
+    return JSON.parse(jsonInString);
   }
 
   const error: any = new Error('Not authorized!');

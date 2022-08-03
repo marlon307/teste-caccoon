@@ -11,6 +11,7 @@ type TLogin = {
 
 function Login() {
   const router = useRouter();
+  const [looginErr, setLoginErr] = useState(false);
   const { mutate } = useLogin();
   const [stateLogin, setStateLogin] = useState<TLogin>({
     username: 'kminchelle',
@@ -23,12 +24,18 @@ function Login() {
       ...curretnState,
       [name]: value,
     }));
+    setLoginErr(false);
   }, []);
 
   const actionLogin = async () => {
-    await loginUser(stateLogin.username, stateLogin.password);
-    mutate();
-    router.push('/products');
+    const { email } = await loginUser(stateLogin.username, stateLogin.password);
+
+    if (email) {
+      mutate();
+      router.push('/products');
+    } else {
+      setLoginErr(true);
+    }
   };
 
   return (
@@ -42,6 +49,7 @@ function Login() {
         placeholder="Usuário"
         changeEvent={ changeLogin }
         autoComplete="username"
+        errorActive={ looginErr }
       />
       <Input
         id="psw"
@@ -51,7 +59,9 @@ function Login() {
         placeholder="Senha"
         changeEvent={ changeLogin }
         autoComplete="current-password"
+        errorActive={ looginErr }
       />
+      { looginErr && <p>Usuário ou senha incorreto.</p> }
       <button type="button" onClick={ actionLogin }>Login</button>
     </form>
   );

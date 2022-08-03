@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['images.unsplash.com', 'dummyjson.com'],
+    domains: ['images.unsplash.com', 'dummyjson.com', 'robohash.org'],
     deviceSizes: [280, 350, 640, 750, 828, 1080, 1200, 1920],
     imageSizes: [256, 384, 1080, 1920],
   },
