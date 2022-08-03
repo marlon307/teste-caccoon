@@ -14,6 +14,7 @@ function Input({
         onChange={ changeEvent }
         autoComplete={ autoComplete }
       />
+      <span>{ placeholder }</span>
     </label>
   );
 }
