@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from 'next/image';
+import ImageComp from '../ComImage/ImageCom';
 import style from './style.module.scss';
 
 type TProduct = {
@@ -11,12 +11,7 @@ function Card({ product }: TProduct) {
     <div className={ style.card }>
       <div className={ style.content_card }>
         <figure>
-          <Image
-            src={ product.thumbnail }
-            layout="fill"
-            quality={ 100 }
-            priority
-          />
+          <ImageComp src={ product.thumbnail } />
         </figure>
         <div className={ style.primary_line } title={ product.description }>
           <div className={ style.title }>
