@@ -10,13 +10,11 @@ async function getProduts(path: string) {
 }
 
 function useProducts<Data = any, Error = any>() {
+  const currentPage = (value: number) => (value === 0 ? PAGE_SIZE : value * PAGE_SIZE);
+
   const {
     data, mutate, error, setSize, size,
-  } = useSWRInfinite<Data, Error>(
-    (index) => `/products?limit=${index === 0
-      ? (size - 1) * PAGE_SIZE : index * PAGE_SIZE}`,
-    getProduts,
-  );
+  } = useSWRInfinite<Data, Error>((index) => `/products?limit=${currentPage(index)} `, getProduts);
 
   const loading = !data && !error;
 
