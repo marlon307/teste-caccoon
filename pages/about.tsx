@@ -1,9 +1,13 @@
+import Head from 'next/head';
 import React from 'react';
 import style from '../sass/style.module.scss';
 
 function About() {
   return (
     <div className={ style.about }>
+      <Head>
+        <title>Buy Shop - Sobre</title>
+      </Head>
       <h1>Lorem Ipsum</h1>
       <article>
         What is Lorem Ipsum?

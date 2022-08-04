@@ -1,5 +1,6 @@
 import React, { useState, useCallback, ChangeEvent } from 'react';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 import Input from '../components/componentsForm/Input';
 import useLogin, { loginUser } from '../hooks/useLogin';
 import style from '../sass/style.module.scss';
@@ -44,6 +45,9 @@ function Login() {
 
   return (
     <form className={ style.form }>
+      <Head>
+        <title>Buy Shop - Login</title>
+      </Head>
       <h1>Entrar</h1>
       <Input
         id="username"

@@ -39,8 +39,8 @@ export function logOutUser() {
   localStorage.removeItem('user');
 }
 
-function useLogin() {
-  const { data, mutate, error } = useSWR<IUser, IErroLogin>('/auth/login', loginUser);
+function useLogin<Data = IUser>() {
+  const { data, mutate, error } = useSWR<Data, IErroLogin>('/auth/login', loginUser);
 
   const loading = !data && !error;
   const loggedOut = error && error.status === 401;
