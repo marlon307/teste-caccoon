@@ -1,5 +1,5 @@
 import useSWR from 'swr';
-import { setCookie, getCookie } from 'cookies-next';
+import { setCookie, getCookie, deleteCookie } from 'cookies-next';
 import api from '../service/api';
 
 export async function loginUser(username: string, password: string) {
@@ -20,7 +20,6 @@ export async function loginUser(username: string, password: string) {
 
     delete data.token;
     localStorage.setItem('user', JSON.stringify(data));
-
     return data;
   }
 
@@ -31,11 +30,17 @@ export async function loginUser(username: string, password: string) {
 
   const error: any = new Error('Not authorized!');
   error.status = 401;
+  localStorage.removeItem('user');
   throw error;
 }
 
-const useLogin = () => {
-  const { data, mutate, error } = useSWR('/auth/login', loginUser);
+export function logOutUser() {
+  deleteCookie('token');
+  localStorage.removeItem('user');
+}
+
+function useLogin() {
+  const { data, mutate, error } = useSWR<IUser, IErroLogin>('/auth/login', loginUser);
 
   const loading = !data && !error;
   const loggedOut = error && error.status === 401;
@@ -46,6 +51,6 @@ const useLogin = () => {
     user: data,
     mutate,
   };
-};
+}
 
 export default useLogin;

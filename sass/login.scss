@@ -17,7 +17,16 @@
     cursor: pointer;
     border: none;
     background: var(--color-button);
-    color: var(--color-cf-button);
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    span {
+      width: 20px;
+      height: 20px;
+    }
   }
 
   p {

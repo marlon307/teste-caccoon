@@ -12,7 +12,7 @@ function Home() {
 
           <p>Is simply dummy text of the printing and typesetting industry.</p>
 
-          <Link href="/products">Lorem Ipsum</Link>
+          <Link href="/products">Vejá mais produtos</Link>
         </div>
         <figure>
           <Image

@@ -1,4 +1,4 @@
-@import './login.scss', './products.scss';
+@import './login.scss', './products.scss', './about.scss';
 
 .main {
   min-height: 100vh;
@@ -43,9 +43,9 @@
   a {
     margin-top: 3em;
     padding: 16px 28px;
-    background: var(--color-l-button);
+    background: var(--color-black);
     border-radius: 12px;
-    color: var(--color-cf-button);
+    color: var(--color-white);
   }
 }
 

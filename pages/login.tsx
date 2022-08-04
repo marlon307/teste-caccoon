@@ -11,14 +11,16 @@ type TLogin = {
 
 function Login() {
   const router = useRouter();
-  const [looginErr, setLoginErr] = useState(false);
   const { mutate } = useLogin();
+  const [looginErr, setLoginErr] = useState(false);
+  const [looginLoading, setLoginLoading] = useState(false);
+
   const [stateLogin, setStateLogin] = useState<TLogin>({
     username: 'kminchelle',
     password: '0lelplR',
   });
 
-  const changeLogin = useCallback(({ target }: ChangeEvent<HTMLInputElement>): void => {
+  const changeLogin = useCallback(({ target }: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = target;
     setStateLogin((curretnState) => ({
       ...curretnState,
@@ -28,6 +30,7 @@ function Login() {
   }, []);
 
   const actionLogin = async () => {
+    setLoginLoading(true);
     const { email } = await loginUser(stateLogin.username, stateLogin.password);
 
     if (email) {
@@ -35,6 +38,7 @@ function Login() {
       router.push('/products');
     } else {
       setLoginErr(true);
+      setLoginLoading(false);
     }
   };
 
@@ -62,7 +66,13 @@ function Login() {
         errorActive={ looginErr }
       />
       { looginErr && <p>Usuário ou senha incorreto.</p> }
-      <button type="button" onClick={ actionLogin }>Login</button>
+      <button
+        type="button"
+        onClick={ actionLogin }
+      >
+        Login
+        { looginLoading && <span className="loading" /> }
+      </button>
     </form>
   );
 }

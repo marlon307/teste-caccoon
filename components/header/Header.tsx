@@ -1,11 +1,16 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import useLogin from '../../hooks/useLogin';
+import useLogin, { logOutUser } from '../../hooks/useLogin';
 import style from './style.module.scss';
 
 function Header() {
-  const { user } = useLogin();
+  const { loggedOut, user, mutate } = useLogin();
+
+  function logOut() {
+    logOutUser();
+    mutate();
+  }
 
   return (
     <header className={ style.header }>
@@ -25,20 +30,50 @@ function Header() {
           </a>
         </Link>
       </div>
-      <div className={ style.login }>
-        { user?.username ? (
-          <figure title={ user?.username }>
-            <Image
-              src={ user?.image }
-              layout="fill"
-              priority
-              quality={ 100 }
-            />
-          </figure>
-        ) : (
+      <div className={ style.menu }>
+        <Link href="https://github.com/marlon307">
+          <a className={ style.link } target="_blank" rel="noreferrer">
+            GitHub
+          </a>
+        </Link>
+        <Link href="about">
+          <a className={ style.link }>
+            Sobre
+          </a>
+        </Link>
+        <Link href="products">
+          <a className={ style.link }>
+            Produtos
+          </a>
+        </Link>
+        { loggedOut ? (
           <Link href="login">
-            Login
+            <a className={ style.link_login }>
+              Login
+            </a>
           </Link>
+        ) : (
+          <div className={ style.avatar }>
+            <figure title={ user?.username }>
+              { user?.username ? (
+                <Image
+                  src={ user?.image }
+                  layout="fill"
+                  priority
+                  quality={ 80 }
+                />
+              ) : <span className="loading" /> }
+            </figure>
+            <button
+              className={ style.user_mn }
+              type="button"
+              onClick={ logOut }
+            >
+              <span>
+                Sair
+              </span>
+            </button>
+          </div>
         ) }
       </div>
     </header>
