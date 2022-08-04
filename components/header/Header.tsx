@@ -1,7 +1,7 @@
-import Image from 'next/image';
-import Link from 'next/link';
 import React from 'react';
+import Link from 'next/link';
 import useLogin, { logOutUser } from '../../hooks/useLogin';
+import ImageComp from '../ComImage/ImageCom';
 import style from './style.module.scss';
 
 function Header() {
@@ -56,12 +56,7 @@ function Header() {
           <div className={ style.avatar }>
             <figure title={ user?.username }>
               { user?.username ? (
-                <Image
-                  src={ user?.image }
-                  layout="fill"
-                  priority
-                  quality={ 80 }
-                />
+                <ImageComp src={ user?.image } />
               ) : <span className="loading" /> }
             </figure>
             <button
