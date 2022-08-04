@@ -7,7 +7,7 @@ async function getProduts(path: string) {
 }
 
 function useProducts() {
-  const { data, mutate, error } = useSWR('/products', getProduts);
+  const { data, mutate, error } = useSWR<IDataProduct>('/products', getProduts);
 
   const loading = !data && !error;
 

@@ -4,13 +4,12 @@ import { useRouter } from 'next/router';
 import useLogin from '../hooks/useLogin';
 import Card from '../components/Card/Card';
 import useProducts from '../hooks/useProducts';
-import type { IDataProduct, IProduct } from '../types/products';
 import style from '../sass/style.module.scss';
 
 function Products() {
   const router = useRouter();
   const { loggedOut } = useLogin();
-  const { data, loading }: IDataProduct = useProducts();
+  const { data, loading } = useProducts();
 
   useEffect(() => {
     router.push('/products');
@@ -23,7 +22,7 @@ function Products() {
       </div>
     ) : (
       <div className={ style.content_products }>
-        { data?.products.map((product: IProduct) => (
+        { data?.products.map((product) => (
           <Card product={ product } key={ product.id } />
         )) }
       </div>

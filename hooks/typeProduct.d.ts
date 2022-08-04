@@ -1,4 +1,4 @@
-export interface IProduct {
+interface IProduct {
   id: number;
   title: string;
   description: string;
@@ -12,12 +12,9 @@ export interface IProduct {
   images: Array<UrlObject>
 }
 
-export interface IDataProduct {
-  loading: boolean;
-  data: {
-    total: number;
-    skip: number;
-    limit: number;
-    products: Array<IProduct>
-  }
+interface IDataProduct {
+  total: number;
+  skip: number;
+  limit: number;
+  products: Array<IProduct>
 }

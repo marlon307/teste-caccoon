@@ -20,7 +20,6 @@ export async function loginUser(username: string, password: string) {
 
     delete data.token;
     localStorage.setItem('user', JSON.stringify(data));
-
     return data;
   }
 
@@ -40,8 +39,8 @@ export function logOutUser() {
   localStorage.removeItem('user');
 }
 
-const useLogin = () => {
-  const { data, mutate, error } = useSWR('/auth/login', loginUser);
+function useLogin() {
+  const { data, mutate, error } = useSWR<IUser, IErroLogin>('/auth/login', loginUser);
 
   const loading = !data && !error;
   const loggedOut = error && error.status === 401;
@@ -52,6 +51,6 @@ const useLogin = () => {
     user: data,
     mutate,
   };
-};
+}
 
 export default useLogin;

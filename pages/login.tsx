@@ -20,7 +20,7 @@ function Login() {
     password: '0lelplR',
   });
 
-  const changeLogin = useCallback(({ target }: ChangeEvent<HTMLInputElement>): void => {
+  const changeLogin = useCallback(({ target }: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = target;
     setStateLogin((curretnState) => ({
       ...curretnState,
