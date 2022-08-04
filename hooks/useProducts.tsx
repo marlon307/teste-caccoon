@@ -13,10 +13,8 @@ function useProducts<Data = any, Error = any>() {
   const currentPage = (value: number) => (value === 0 ? PAGE_SIZE : value * PAGE_SIZE);
 
   const {
-    data, mutate, error, setSize, size,
+    data, mutate, setSize, size, isValidating,
   } = useSWRInfinite<Data, Error>((index) => `/products?limit=${currentPage(index)} `, getProduts);
-
-  const loading = !data && !error;
 
   useEffect(() => {
     setSize(size);
@@ -33,7 +31,7 @@ function useProducts<Data = any, Error = any>() {
   }, []);
 
   return {
-    loading,
+    loading: isValidating,
     data: data ? data[data.length - 1] : [],
     mutate,
   };
