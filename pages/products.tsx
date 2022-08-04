@@ -1,11 +1,19 @@
+import React, { useEffect } from 'react';
 import { GetServerSideProps } from 'next/types';
-import React from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import api from '../service/api';
 import type IProduct from '../types/products';
 import style from '../sass/style.module.scss';
+import useLogin from '../hooks/useLogin';
 
 function Products({ products }: IProduct) {
+  const router = useRouter();
+  const { loggedOut } = useLogin();
+  useEffect(() => {
+    router.push('/products');
+  }, [loggedOut]);
+
   return (
     <div className={ style.content_products }>
       { products.map((product) => (

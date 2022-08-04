@@ -31,6 +31,7 @@ export async function loginUser(username: string, password: string) {
 
   const error: any = new Error('Not authorized!');
   error.status = 401;
+  localStorage.removeItem('user');
   throw error;
 }
 

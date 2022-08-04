@@ -5,7 +5,7 @@ import useLogin from '../../hooks/useLogin';
 import style from './style.module.scss';
 
 function Header() {
-  const { user } = useLogin();
+  const { loggedOut, user } = useLogin();
 
   return (
     <header className={ style.header }>
@@ -26,19 +26,21 @@ function Header() {
         </Link>
       </div>
       <div className={ style.login }>
-        { user?.username ? (
-          <figure title={ user?.username }>
-            <Image
-              src={ user?.image }
-              layout="fill"
-              priority
-              quality={ 100 }
-            />
-          </figure>
-        ) : (
+        { loggedOut ? (
           <Link href="login">
             Login
           </Link>
+        ) : (
+          <figure title={ user?.username }>
+            { user?.username ? (
+              <Image
+                src={ user?.image }
+                layout="fill"
+                priority
+                quality={ 80 }
+              />
+            ) : <span className="loading" /> }
+          </figure>
         ) }
       </div>
     </header>

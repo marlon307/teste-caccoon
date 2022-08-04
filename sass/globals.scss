@@ -5,6 +5,7 @@
   list-style: none;
   border: none;
   text-decoration: none;
+  box-sizing: border-box;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-font-smoothing: antialiased;
@@ -19,14 +20,17 @@
   --color-text: #7c7c7c;
   --color-button: #006bef;
   // color color font button
-  --color-cf-button: #fff;
+  --color-white: #fff;
   --color-h1: #454444;
   --color-h2: #4b4b4b;
   // color link button
-  --color-l-button: #111111;
+  --color-black: #111111;
   --color-green: #0fa21b;
   --color-red: #cc0b0b;
   --color-shadow: #f7f7f7;
+  // Loading color
+  --color-loading-1: #acacac33;
+  --color-loading-2: #a8a8a8;
 }
 
 #__next {
@@ -39,13 +43,28 @@
   grid-template-columns: 100%;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+// https://metajunaid.github.io/SpinBolt/
+.loading {
+  height: 100%;
+  width: 100%;
+  color: var(--color-loading-1);
+  position: relative;
+  display: inline-block;
+  border: 3px solid;
+  border-radius: 50%;
+  border-right-color: var(--color-loading-2);
+  animation: rotate 1s linear infinite;
+  margin: 0 auto;
 }
 
-* {
-  box-sizing: border-box;
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @media (prefers-color-scheme: dark) {
