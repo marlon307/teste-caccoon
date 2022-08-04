@@ -1,5 +1,5 @@
 import useSWR from 'swr';
-import { setCookie, getCookie } from 'cookies-next';
+import { setCookie, getCookie, deleteCookie } from 'cookies-next';
 import api from '../service/api';
 
 export async function loginUser(username: string, password: string) {
@@ -33,6 +33,11 @@ export async function loginUser(username: string, password: string) {
   error.status = 401;
   localStorage.removeItem('user');
   throw error;
+}
+
+export function logOutUser() {
+  deleteCookie('token');
+  localStorage.removeItem('user');
 }
 
 const useLogin = () => {
