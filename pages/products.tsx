@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { GetServerSideProps } from 'next/types';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 import useLogin from '../hooks/useLogin';
 import Card from '../components/Card/Card';
 import useProducts from '../hooks/useProducts';
@@ -15,18 +16,25 @@ function Products() {
     router.push('/products');
   }, [loggedOut]);
 
+  const listProducts = data.length ? [].concat(...data) : [];
+
   return (
-    loading ? (
-      <div className={ style.is_loading }>
-        <span className="loading" />
-      </div>
-    ) : (
+    <>
+      <Head>
+        <title>Buy Shop - Produtos</title>
+      </Head>
       <div className={ style.content_products }>
-        { data?.products.map((product) => (
+        { listProducts.map((product: IProduct) => (
           <Card product={ product } key={ product.id } />
         )) }
       </div>
-    )
+      { loading && (
+        <div className={ style.is_loading }>
+          <span className="loading" />
+        </div>
+      ) }
+      <div id="sentinela" />
+    </>
   );
 }
 
