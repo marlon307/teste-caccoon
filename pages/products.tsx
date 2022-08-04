@@ -28,7 +28,7 @@ function Products() {
           <Card product={ product } key={ product.id } />
         )) }
       </div>
-      { loading && (
+      { loading && listProducts.length < 100 && (
         <div className={ style.is_loading }>
           <span className="loading" />
         </div>
