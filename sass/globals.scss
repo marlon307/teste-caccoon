@@ -57,6 +57,11 @@
   margin: 0 auto;
 }
 
+.main {
+  grid-area: main;
+  min-height: 100vh;
+}
+
 @keyframes rotate {
   0% {
     transform: rotate(0);

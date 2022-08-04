@@ -33,7 +33,6 @@ function Products() {
           <span className="loading" />
         </div>
       ) }
-      <div id="sentinela" />
     </>
   );
 }
