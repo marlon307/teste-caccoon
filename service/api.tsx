@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: process.env.LOCAL_API_HOST,
+  baseURL: 'https://dummyjson.com',
   // withCredentials: true,
 });
 
