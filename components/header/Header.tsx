@@ -32,7 +32,7 @@ function Header() {
       </div>
       <div className={ style.menu }>
         <Link href="https://github.com/marlon307">
-          <a className={ style.link } target="_blank" rel="noreferrer">
+          <a className={ style.link } target="_blank" rel="noreferrer" data-external="true">
             GitHub
           </a>
         </Link>
@@ -56,7 +56,7 @@ function Header() {
           <div className={ style.avatar }>
             <figure title={ user?.username }>
               { user?.username ? (
-                <ImageComp src={ user?.image } />
+                <ImageComp src={ user?.image } alt={ user?.username } />
               ) : <span className="loading" /> }
             </figure>
             <button

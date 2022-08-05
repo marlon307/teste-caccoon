@@ -22,9 +22,10 @@ const toBase64 = (str: string) => (typeof window === 'undefined'
 
 type TImageCom = {
   src: ImageProps['src'];
+  alt: ImageProps['alt'];
 };
 
-function ImageComp({ src }: TImageCom) {
+function ImageComp({ src, alt }: TImageCom) {
   return (
     <Image
       src={ src }
@@ -33,6 +34,7 @@ function ImageComp({ src }: TImageCom) {
       quality={ 100 }
       placeholder="blur"
       blurDataURL={ `data:image/svg+xml;base64,${toBase64(shimmer('100%', '100%'))}` }
+      alt={ alt }
     />
   );
 }

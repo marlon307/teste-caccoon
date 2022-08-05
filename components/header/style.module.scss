@@ -50,12 +50,24 @@
 }
 
 .link {
+  position: relative;
   color: var(--color-black);
 
   &:hover {
     text-decoration: underline;
   }
 }
+
+// https://www.adfreak.de/en/blog/good-usability-for-external-links-underline-html-css-arrow/
+// https://www.w3schools.com/charsets/ref_utf_arrows.asp
+.link[data-external="true"]::after {
+  position: absolute;
+  content: '\2197';
+  font-size: 14px;
+  top: -5px;
+}
+
+
 
 .link_login {
   border-radius: 12px;
