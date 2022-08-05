@@ -11,7 +11,7 @@ function Card({ product }: TProduct) {
     <div className={ style.card }>
       <div className={ style.content_card }>
         <figure>
-          <ImageComp src={ product.thumbnail } />
+          <ImageComp src={ product.thumbnail } alt={ product.description } />
         </figure>
         <div className={ style.primary_line } title={ product.description }>
           <div className={ style.title }>

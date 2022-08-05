@@ -1,7 +1,8 @@
 .content_products {
   display: grid;
-  grid-auto-columns: 1fr;
-  grid-template-areas: '. . . . . . . .';
+  grid-template-areas:
+    '. . . . . . . .'
+  ;
   grid-column-gap: 1em;
   grid-template-rows: 350px;
   row-gap: 4em;

@@ -38,8 +38,9 @@
   grid-template-areas:
     'header'
     'main'
+    'sentinela'
     'footer';
-  grid-template-rows: 70px auto 300px;
+  grid-template-rows: 70px auto auto 300px;
   grid-template-columns: 100%;
 }
 
@@ -60,6 +61,10 @@
 .main {
   grid-area: main;
   min-height: 100vh;
+}
+
+#sentinela {
+  grid-area: sentinela;
 }
 
 @keyframes rotate {

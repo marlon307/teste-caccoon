@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 import useSWRInfinite from 'swr/infinite';
 import api from '../service/api';
 
+// https://swr.vercel.app/examples/infinite-loading
+
 const PAGE_SIZE = 10;
 
 async function getProduts(path: string) {
@@ -25,6 +27,8 @@ function useProducts<Data = any, Error = any>() {
       if (entries.some((entry) => entry.isIntersecting)) {
         setSize((current) => current + 1);
       }
+    }, {
+      threshold: 1,
     });
     intersectionObserver.observe(document.querySelector('#sentinela')!);
     return () => intersectionObserver.disconnect();
